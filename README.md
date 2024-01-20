@@ -105,3 +105,5 @@ const removeTaskAction =
 	type: "REMOVE_TASK",
 	id: 1 //we can remove a task by a particular task id.
 }
+
+--------------------------------------------------------------
