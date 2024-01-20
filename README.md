@@ -107,3 +107,38 @@ const removeTaskAction =
 }
 
 --------------------------------------------------------------
+06 Creating Reducer
+
+Reducer is a pure function which takes two arguments
+1. initial state
+2. object
+
+syntax:
+function reducer(state, action) {
+	//how to handle action
+}
+
+---------------------------------------------
+
+07 Creating redux store
+
+create new file -> store.js
+
+We use createStore method from Redux to create store.
+inside createStore() we have to pass root reducer.
+Root Reducer is just a combination of all reducers.
+Now, createStore() will return store with its method.
+let's store that in store variable and export it
+
+
+first install redux - npm i redux
+
+--------------------------------------
+
+create new file -> index.js
+
+import the store and console.log this store
+we get the store in console, we will get the methods like dispatch for dispatching the action,
+getState for getting the current state.
+
+---------------------------------------

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/shivssm/Redux/issues"
   },
-  "homepage": "https://github.com/shivssm/Redux#readme"
+  "homepage": "https://github.com/shivssm/Redux#readme",
+  "dependencies": {
+    "redux": "^5.0.1"
+  }
 }
