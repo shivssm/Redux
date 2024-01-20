@@ -53,3 +53,55 @@ So there are three main thing about Redux: Action, Store, Reducer.
 Actions - What to do
 Reducer - How to do
 Store - Keep data in single place
+
+---------------------------------------------------------------------
+
+Section 03 - Introduction of application
+
+We will build To-do Application, where we will 
+-Add the tasks
+-Remove the tasks
+-Mark as completed
+
+Steps for implementing redux
+>Designing the store
+>List our actions (What to do)
+>Create reducer function (How to do)
+>Create redux store
+
+---------------------------------------------------------------
+>Designing the store
+-To add task in our application - We store all our task details
+in array. So our store look like this
+[
+	{
+		id: 1,
+		task: "Design store",
+		completed: false
+	}, {...}, {...}
+]
+
+---------------------------------------------------------------
+> Listing all actions
+> ADD_TASK 
+> REMOVE_TASK
+> TASK_COMPLETED
+
+Action = What to do
+In Redux, every action is an object and structure of this object
+is fixed. They have at least one property, which is type.
+
+const addTaskAction = 
+{
+	type: "ADD_TASK", //we can also use numbers instead of string,
+						this clearly defines the purpose of tasks
+	payload: {   // we have all data related to the action
+		task: "This is new task!" 
+	}
+}
+
+const removeTaskAction = 
+{
+	type: "REMOVE_TASK",
+	id: 1 //we can remove a task by a particular task id.
+}
