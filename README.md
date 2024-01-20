@@ -307,3 +307,10 @@ console.log(store.getState());
 
 ---------------------------------------------------
 
+# Exercise - To mark task as completed
+
+-First Go to actionTypes.js and add a TASK_COMPLETED type.
+-Go to reducer.js and write case for actionTypes.TASK_COMPLETED.
+-Then write the action for actionTypes.TASK_COMPLETED. 
+-Then go to index.js file and import the completedTask from action
+and call store.dispatch().
