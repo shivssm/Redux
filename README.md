@@ -314,3 +314,44 @@ console.log(store.getState());
 -Then write the action for actionTypes.TASK_COMPLETED. 
 -Then go to index.js file and import the completedTask from action
 and call store.dispatch().
+
+--------------------------------------------------------
+
+# Folder Structure
+
+src
+	store
+	- store.js
+	  task
+		- action.js
+		- reducer.js
+		- actionTypes.js
+	  employess
+	    - action.js
+		- reducer.js
+		- actionTypes.js
+
+Duck Module Folder Structure
+src
+	store
+		- store.js
+		- tasks.js
+		- employees.js
+		
+-----------------------------------------------------------------
+
+# Implementing Duck Module
+Combining Action, Reducers and Action-types in one file.
+
+-Create new folder - store
+-Move all files in store folder except index.js file
+-Create a new file tasks.js inside store
+-Copy all actionTypes.js code to tasks.js
+	Remove the export from those types & delete actionTypes.js file
+-Copy all code of action.js file except import statement in tasks.js file
+-Similarly do with Reducer.js file into tasks.js
+-Modify import of reduce in store.js file to tasks.
+-Also Modify imports in index.js file and rename store.js to configureStore.js
+
+
+
