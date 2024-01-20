@@ -142,3 +142,10 @@ we get the store in console, we will get the methods like dispatch for dispatchi
 getState for getting the current state.
 
 ---------------------------------------
+
+08 Dispatching the actions
+We can dispatch action using dispatch method.
+Previously we design action  that is an objectwith two properties, 
+first one is type and second one is payload which holds all data.
+Pass those in dispatch method.
+
