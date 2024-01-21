@@ -600,3 +600,7 @@ So we don't need to use devToolsEnchancer and this function also allows us to di
 
 - If we use createStore function, then we have to add one middleware for making API request, But with Redux Toolkit, we don't worry about that, and it will also make our code short and easy to maintain.
 -----------------------------------------------------------------
+# Defining Actions
+-------------------
+
+- Import createAction function from redux-toolkit.
