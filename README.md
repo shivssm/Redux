@@ -353,5 +353,27 @@ Combining Action, Reducers and Action-types in one file.
 -Modify import of reduce in store.js file to tasks.
 -Also Modify imports in index.js file and rename store.js to configureStore.js
 
+--------------------------------------------------------------------
 
+# Redux Thunk
+
+Thunk - In programming term, thunk is "a peice of code that does
+some delay work". It means, rather that run the logic now, we can
+write code that can be used to perform the work later.
+
+Ex - We want to fetch the data from api and after fetching data we can store that into Redux store.
+
+you might think, we can simply add async for this action creator?
+- we can't do that. Redux thunk will allow actions to return function
+instead of returning plain objects.
+
+Using Redux-Thunk middleware, we can write asynchronous/complex logic in Redux like calling API, dispatch multiple actions from one action, etc..
+
+To apply Redux-Thunk
+- Add thunk method in configure store function
+  Go to configureStore.js file and import applyMiddleware from "redux"
+- Import thunk from redux-thunk library.
+  -> npm i redux-thunk
+- In createStore function after reducer add applyMiddleware(thunk) and pass thunk into it. This is an old method to call api in Redux.
+---------------------------------------------------------------------
 
