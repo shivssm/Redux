@@ -584,3 +584,19 @@ We can also do tracing with this extension and even we can import and export log
 > createSlice
 
 - install this library - npm i @reduxjs/toolkit
+-----------------------------------------------------------------
+
+# ConfigureStore in toolkit
+------------------------------
+How to create Redux store using Redux toolkit?
+-> in configureStore.js
+- At first we imported createStore function from redux library. As a parameter we passed reducer and after that we use devToolsEnchancer function for connect our application with Redux dev tools.
+
+- In Redux Toolkit we have one method, called configureStore. So
+first we import it from reduxjs/toolkit and replace with createStore.
+
+- This function takes configuration object, there we will pass reducer and it will automatically configure for redux devtool.
+So we don't need to use devToolsEnchancer and this function also allows us to dispatch asynchronous actions.
+
+- If we use createStore function, then we have to add one middleware for making API request, But with Redux Toolkit, we don't worry about that, and it will also make our code short and easy to maintain.
+-----------------------------------------------------------------
