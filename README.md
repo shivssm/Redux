@@ -410,7 +410,7 @@ In this section, we see the basics of Redux and build our first redux applicatio
 ---------------------------------------------------------------------
 🚀How redux work?
 ------------------
--We store all our application state (data) in a single place called Store. Imagine Store as Database for frontend.
+- We store all our application state (data) in a single place called Store. Imagine Store as Database for frontend.
 -----------------------------------------------
 -There are 3 main parts of Redux
 ---------------------------------
@@ -420,9 +420,9 @@ Reducer - function which will add, update and delete data (How to do)
 ----------------------------------------------------------------------
 Actions - which will define which task we want to perform (What to do)
 ----------------------------------------------------------------------
--We can only change store data using the Reducer function.
+- We can only change store data using the Reducer function.
 ---------------------------------------------------------------
--For example, we have a to-do application. We want to add a new task. So
+- For example, we have a to-do application. We want to add a new task. So
 ---------------------------------------------------------------------
 Action - ADD_TASK
 ------------------------
@@ -442,9 +442,9 @@ Reducer - perform how to add task in the store
 
 💻Creating Reducer function:
 -----------------------------
--A reducer is a pure function that takes two arguments. The first one is the Initial or Current state and the second one is the action object.
+- A reducer is a pure function that takes two arguments. The first one is the Initial or Current state and the second one is the action object.
 --------------------------------------------------------------------
--Inside this function, we use If..else or we can use Switch case to identify the action type.
+- Inside this function, we use If..else or we can use Switch case to identify the action type.
 --------------------------------------------------------------------
 let id = 0;
  
@@ -495,7 +495,7 @@ export default store;
 ----------------------------------------------------------------------
 🧑🏻‍💻Dispatch action from store
 ----------------------------------
--For dispatching any action, we have to use store.dispatch method and then we pass our action object with type property (which is the action name) and payload property (in which we can pas data related to action).
+- For dispatching any action, we have to use store.dispatch method and then we pass our action object with type property (which is the action name) and payload property (in which we can pas data related to action).
 --------------------------------------------------------------------
 store.dispatch({ type: "ADD_TASK", payload: { task: "Add new task"} });
 --------------------------------------------------------------------
@@ -517,3 +517,42 @@ const unsubscribe = store.subscribe(() => {
 });
 unsubscribe();
 ----------------------------------------------------------------------
+Debug Redux Application
+------------------------
+- Redux dev tools
+  - Configure the redux dev tools
+  - See actions which we perform
+  - Trace actions
+  - Import and export log file
+-----------------------------------
+Add this function in configureStore.js file, this will help in connect our application with Redux Dev Tools.
+
+ window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+--------------------------------------------------
+ - We have 4 types of monitor in Redux 
+
+ - Inspector - (Most use monitor)
+ ----------------------------------
+
+ In left, we can see all action we perform, and right side we have different tabs for Action, State, Diff, Trace and Test.
+ Select one of the task and its right side we can see its action object, its type and payload.
+
+ Action tab - After that click on State, here we can see the updated State by this action.
+ We can also change type of data view Tree, Chart and Raw.
+
+ Diff tab - it will show the difference and hightlight that difference.
+
+ Trace tab - it has to be enable
+
+ Test tab - it is very powerful tab, because we directly get the test code and we can easily test our application.
+
+At bottom we have slider, which is use to select task. So by clicking on this play button, we can see our task run one by one and you can pause that as you want to.
+
+ - Log monitor
+ ------------
+ In this, all changes in log format, at top it display initial state of application. Then we dispatch ADD_TASK, there we can see action payload and update state. It will logs all the action we have done.
+
+ - Chart 
+
+ - RTK Query
+----------------------------------------------------------------

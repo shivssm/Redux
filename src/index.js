@@ -15,5 +15,5 @@ console.log(store.getState());
 store.dispatch(completedTask(2));
 
 store.dispatch(removeTask(1));
-store.dispatch(fetchTodo());
+// store.dispatch(fetchTodo());
 console.log(store.getState());
