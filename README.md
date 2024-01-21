@@ -377,3 +377,28 @@ To apply Redux-Thunk
 - In createStore function after reducer add applyMiddleware(thunk) and pass thunk into it. This is an old method to call api in Redux.
 ---------------------------------------------------------------------
 
+# Call API using Redux-thunk
+
+In tasks.js file, we have to add action for calling API.
+
+const fetchTodo = () => {
+	return async function (dispatch, getState) {
+		const rsponse = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+		console.log(response)
+	}
+}
+
+export const fetchTodo = () =>  async (dispatch) => {
+		const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+		const task = await response.json();
+		dispatch(addTask(task.title));
+	}
+
+Recap Redux-Thunk
+- Redux-thunk is used to apply complex logic or asynchronous task in redux.
+- First we have to define action same as we define other actions.
+- But at the place of returning object, we return another function in
+  which we can perform asynchronous or synchronous task.
+- In that function, we have two parameters dispatch and payload. 
+  At the end we can dispatch action from that function.
+- This is not the best method to call API in Redux.
