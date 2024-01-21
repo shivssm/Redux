@@ -572,3 +572,15 @@ export default store;
 We can also do tracing with this extension and even we can import and export log file from this extension
 
 --------------------------------------------
+
+# Redux Toolkit (New way to write create store)
+----------------------------------------------
+
+-By using this library, we don't need to write a lot boilerplate code for creating store, actions and reducers. 
+
+> modern configureStore function
+> createAction
+> createReducer
+> createSlice
+
+- install this library - npm i @reduxjs/toolkit
