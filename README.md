@@ -728,4 +728,81 @@ const store = configureStore({
   },
 });
 
--------------------------------------------
+-----------------------------------------------------------
+
+Summary
+----------
+
+In this section, we learn the best and the modern way to write redux code using redux-toolkit.
+
+Redux-toolkit is a very popular and powerful library for simplifying the redux code and it is officially recommended by Redux.
+
+Redux-toolkit has a lot of methods configure store, createAction, createReducer and createSlice.
+
+configureStore method is used to create a redux store and it will automatically configure redux-devTools with it. So we don’t need to use devtoolsEnhancer function.
+
+Then we see createAction method, which is used to create an action object with payload property
+----------------------------------------------------------
+
+import { createAction } from '@reduxjs/toolkit';
+ 
+const addTask = createAction('ADD_TASK');
+console.log(addTask({ task: 'Add new task!' }));
+ 
+//Output in console
+{ type: 'ADD_TASK', payload: { task: 'Add new task!' } }
+------------------------------------------------------------
+Then we see createReducer function, which is used to create the reducer function without writing switch case or If..else.
+
+And at the end, we have createSlice function, which is used to create actions and reducers in one function. This is very useful for making our code clean and maintainable.
+
+-------------------------------------------------------
+import { createSlice } from "@reduxjs/toolkit";
+let id = 0;
+ 
+const taskSlice = createSlice({
+    name: "tasks",
+    initialState: [],
+    reducers: {
+        // action: function
+        addTask: (state, action) => {
+            state.push({
+                id: ++id,
+                task: action.payload.task,
+                completed: false,
+            });
+        },
+        removeTask: (state, action) => {
+            const index = state.findIndex(
+                (task) => task.id === action.payload.id
+            );
+            state.splice(index, 1);
+        },
+        completedTask: (state, action) => {
+            const index = state.findIndex(
+                (task) => task.id === action.payload.id
+            );
+            state[index].completed = true;
+        },
+    },
+});
+ 
+export const { addTask, removeTask, completedTask } = taskSlice.actions;
+export default taskSlice.reducer;
+-------------------------------------------------------
+If we are using redux-toolkit, then we can combine reducers like an object.
+----------------------------------------------------------
+
+import { configureStore } from "@reduxjs/toolkit";
+import employeeReducer from "./employees";
+import taskReducer from "./tasks";
+ 
+const store = configureStore({
+    reducer: {
+        tasks: taskReducer,
+        employees: employeeReducer,
+    },
+});
+ 
+export default store;
+------------------------------------------------------------
