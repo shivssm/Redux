@@ -699,3 +699,33 @@ export const {addTask, removeTask, completedTask} = taskSlice.actions
 export default taskSlice.reducer;
 
 -----------------------------------------------------------
+
+# combine Reducers using Redux Toolkit
+
+- Earlier we use combineReducers method from redux, it will combine two or more reducer and create a new reducer which we called rootReducer and then we have to use that reducer in configure store function.
+
+import { combineReducers } from 'redux';
+import taskReducer from './tasks';
+import employeeReducer from './employees';
+
+const rootReducer = combineReducers({
+	tasks: taskReducer,
+	employee: employeeReducer,
+});
+
+export default rootReducer;
+---------------------------------------------------------
+
+- In Redux toolkit we don't have to do any of these steps.
+
+import taskReducer from "./tasks";
+import employeeReducer from "./employees";
+
+const store = configureStore({
+  reducer: {
+    tasks: taskReducer,
+    employees: employeeReducer,
+  },
+});
+
+-------------------------------------------
