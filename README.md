@@ -604,3 +604,98 @@ So we don't need to use devToolsEnchancer and this function also allows us to di
 -------------------
 
 - Import createAction function from redux-toolkit.
+----------------------------------------------------------------
+
+# Defining Reducers
+--------------------
+
+- We can create Reducer using Redux Toolkit.
+- A lot of people don't like this switch case and immutable approach for updating data.
+
+- In Redux Toolkit, we have one function called createReducer()
+This function will help us to git rid from the switch case and also can handle data in mutable format.
+Under the hood, Redux toolkit will convert our mutable code into immutable code and another benefit on this create reducer function is that we don't need to write default case.
+
+- Import createReducer from @reduxjs/toolkit.
+- It will take two parameters
+
+First will be intial state empty array and second paramter is object in which we have actions with function.
+state will give current state of reducer.
+action is the object which is passed for this task with type and payload properties.
+
+createReducer([], {
+	"ADD_TASk": (state, action) => {
+		state.push(...)
+	}
+})
+--------------------------------------------------------
+import { createAction, createReducer } from "@reduxjs/toolkit";
+
+// Actions
+export const addTask = createAction("ADD_TASK");
+export const removeTask = createAction("REMOVE_TASK");
+export const completedTask = createAction("TASK_COMPLETED");
+
+// Reducer
+let  id = 0
+
+export default createReducer ([], {
+	[addTask.type]: (state, action) => {
+		state.push({
+			id: ++id,
+			task: action.payload.task,
+			completed: false
+		})
+	},
+	[removeTask.type]: (state, action) => {
+		const index = state.findIndex(task => task.id === action.payload.id);
+		state.splice(index, 1);
+	},
+	[completedTask.type]: (state, action) => {
+		const index = state.findIndex(task => task.id === action.payload.id);
+		state[index].completed = true;
+	}
+})
+
+-----------------------------------------------------------
+
+# Creating slices with Redux toolkit
+
+so we don't need to create action & reducers individually.
+We can create an action and reducer with single method, which is createSlice.
+
+- import createSlice from reduxjs/toolkit
+- call createSlice method
+  this will take configurable object, first property is the name of the slice which is 'task'. Then we have initialState, in this case empty array []. And then we have reducers, here reducers takes an object with key value pair, same as createReducer function. So in key will pass action name and value will be action handler.
+
+
+import { createSlice } from "@reduxjs/toolkit";
+let  id = 0
+
+const taskSlice = createSlice({
+	name: 'tasks',
+	initialState: [],
+	reducers: {
+		addTask: (state, action) => {
+			state.push({
+				id: ++id,
+				task: action.payload.task,
+				completed: false
+			});
+		},
+		removeTask: (state, action) => {
+			const index = state.findIndex(task => task.id === action.payload.id);
+			state.splice(index, 1);
+		},
+		completedTask: (state, action) => {
+			const index = state.findIndex(task => task.id === action.payload.id);
+			state[index].completed = true;
+		}
+	}
+});
+
+export const {addTask, removeTask, completedTask} = taskSlice.actions
+
+export default taskSlice.reducer;
+
+-----------------------------------------------------------
